@@ -1,0 +1,73 @@
+<html>
+<head>
+  <!--#include virtual="header.html" -->
+  <title>Problem Based Benchmark Suite : Integer Sort</title>
+</head>
+
+<body>
+<!--#include virtual="navbar.html" -->
+<div class=center>
+
+<h2>Integer Sort (ISORT):</h2> 
+
+<p>
+Sort fixed-length unsigned integer keys with the ability to carry
+along fixed-length auxiliary data.  The sort must be stable unless 
+the benchmark is marked with -U (ISORT-U).
+</p>
+
+<h3>Input and Output File Formats</h3>
+
+<p>
+The input and output should be in the <a
+href="benchmarks/sequenceIO.html">sequence</a> format.  The output file must be
+in sorted with respect to the integer values.   If there is auxiliary data
+it must be included in the output and the sort must be stable unless 
+indicated with -U.
+
+</p>
+
+<h3>Default Input Distributions</h3>
+
+Each distribution should be run for <tt>n=10,000,000</tt>.  The weights
+used for average time are given in parentheses.
+<ul>
+<li>
+(1) 32-bit unsigned integer keys from the uniform distribution.
+<blockquote>
+<tt>randomSeq -t int &lt;n&gt; &lt;filename&gt;</tt>
+</blockquote>
+</li>
+
+<li>
+(1) 32-bit unsigned integer keys from the exponential distribution.
+<blockquote>
+<tt>exptSeq -t int &lt;n&gt; &lt;filename&gt;</tt>
+</blockquote>
+</li>
+
+<li>
+(1) 32-bit unsigned integer keys from the random distribution, along
+with 32-bit auxiliary data.
+<blockquote>
+<tt>randomSeq -t int &lt;n&gt; &lt;tmpname&gt;</tt><br>
+<tt>addDataSeq -t int &lt;tmpname&gt; &lt;filename&gt;</tt><br>
+</blockquote>
+</li>
+
+<li>
+(1) 8-bit unsigned integer keys from the random distribution, along
+with 32-bit auxiliary data.
+<blockquote>
+<tt>randomSeq -t int -r 256 &lt;n&gt; &lt;tmpname&gt;</tt><br>
+<tt>addDataSeq -t int &lt;tmpname&gt; &lt;filename&gt;</tt><br>
+</blockquote>
+</li>
+
+</ul>
+
+
+</div>
+<!--#include virtual="footer.html" -->
+</body>
+<html>
